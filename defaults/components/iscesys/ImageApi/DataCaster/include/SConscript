@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+import os
+Import('envDataCaster')
+package = envDataCaster['PACKAGE']
+build = envDataCaster['PRJ_SCONS_BUILD'] + '/' + package + '/include/'
+envDataCaster.AppendUnique(CPPPATH = [build])
+listFiles = ['DataCaster.h','DataCasterT.h','Caster.h','CasterRound.h',
+             'CasterComplexRound.h','CasterComplexInt.h',
+             'ByteToDoubleCaster.h','ByteToFloatCaster.h','ByteToIntCaster.h',
+             'ByteToLongCaster.h','ByteToShortCaster.h','DoubleToByteCaster.h',
+             'DoubleToFloatCaster.h','DoubleToFloatCpxCaster.h','DoubleToIntCaster.h',
+             'DoubleToIntCpxCaster.h','DoubleToLongCaster.h','DoubleToLongCpxCaster.h',
+             'DoubleToShortCaster.h','DoubleToShortCpxCaster.h','FloatToByteCaster.h',
+             'FloatToDoubleCaster.h','FloatToDoubleCpxCaster.h','FloatToIntCaster.h',
+             'FloatToIntCpxCaster.h','FloatToLongCaster.h','FloatToLongCpxCaster.h',
+             'FloatToShortCaster.h','FloatToShortCpxCaster.h','IntToByteCaster.h',
+             'IntToDoubleCaster.h','IntToDoubleCpxCaster.h','IntToFloatCaster.h',
+             'IntToFloatCpxCaster.h','IntToLongCaster.h','IntToLongCpxCaster.h',
+             'IntToShortCaster.h','IntToShortCpxCaster.h','LongToByteCaster.h',
+             'LongToDoubleCaster.h','LongToDoubleCpxCaster.h','LongToFloatCaster.h',
+             'LongToFloatCpxCaster.h','LongToIntCaster.h','LongToIntCpxCaster.h',
+             'LongToShortCaster.h','LongToShortCpxCaster.h','ShortToByteCaster.h',
+             'ShortToDoubleCaster.h','ShortToDoubleCpxCaster.h','ShortToFloatCaster.h',
+             'ShortToFloatCpxCaster.h','ShortToIntCaster.h','ShortToIntCpxCaster.h',
+             'ShortToLongCaster.h','ShortToLongCpxCaster.h']
+ 
+#since there are so many files and more can be added just parse trought all the files in the directory
+envDataCaster.Install(target = build,source = listFiles)
+envDataCaster.Alias('build',build)
+

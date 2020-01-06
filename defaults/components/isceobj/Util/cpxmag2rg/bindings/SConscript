@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+import os
+
+Import('envcpxmag2rg')
+package = envcpxmag2rg['PACKAGE']
+install = envcpxmag2rg['PRJ_SCONS_INSTALL'] + '/' + package 
+build = envcpxmag2rg['PRJ_SCONS_BUILD'] + '/' + package 
+libList = ['cpxmag2rg','DataAccessor','InterleavedAccessor']
+envcpxmag2rg.PrependUnique(LIBS = libList)
+module = envcpxmag2rg.LoadableModule(target = 'cpxmag2rg.abi3.so', source = 'cpxmag2rgmodule.cpp') 
+envcpxmag2rg.Install(install,module)
+envcpxmag2rg.Alias('install',install)
+envcpxmag2rg.Install(build,module)
+envcpxmag2rg.Alias('build',build)

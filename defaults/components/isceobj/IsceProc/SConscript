@@ -1,0 +1,51 @@
+#! /usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2013 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Kosal Khun
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+# Comment: Adapted from InsarProc/SConscript
+
+import os
+
+Import('envisceobj')
+package = envisceobj['PACKAGE']
+project = 'IsceProc'
+
+install = os.path.join(envisceobj['PRJ_SCONS_INSTALL'],package,project)
+
+listFiles = ['__init__.py', 'Factories.py', 'IsceProc.py', 'runCoherence.py',
+             'runEstimateHeights.py', 'runFilter.py',
+             'runFormSLCTSX.py', 'runFormSLC.py', 'runGeocode.py',
+             'runGrass.py', 'runMocompbaseline.py', 'runOffoutliers.py',
+             'runOrbit2sch.py', 'runPrepareResamps.py', 'runPreprocessor.py',
+             'runPulseTiming.py', 'runResamp_image.py', 'runResamp_only.py',
+             'runResamp.py', 'runOffsetprf.py', 'runOffsetprf_ampcor.py',
+             'runRgoffset.py', 'runSetmocomppath.py',
+             'runShadecpx2rg.py', 'runTopo.py',
+             'runCorrect.py', 'runUpdatePreprocInfo.py', 'extractInfo.py',
+             'createDem.py', 'INPUT.py', 'runISSI.py',
+             'runCrossmul.py' #2013-11-26
+             ]
+
+envisceobj.Install(install,listFiles)
+envisceobj.Alias('install',install)
+
+

@@ -1,0 +1,15 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#                                  Giangi Sacco
+#                        NASA Jet Propulsion Laboratory
+#                      California Institute of Technology
+#                        (C) 2009  All Rights Reserved
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#!/usr/bin/env python
+import os
+
+Import('envPlanet')
+# Need to figure out a graceful way to execute unittests

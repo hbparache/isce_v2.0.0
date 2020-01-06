@@ -1,0 +1,8 @@
+<greeter>
+    <component name="greeter">
+<!--
+        <property name="name to use in greeting"><value>Eric</value></property>
+-->
+        <property name="name to use in greeting">Eric</property>
+    </component>
+</greeter>

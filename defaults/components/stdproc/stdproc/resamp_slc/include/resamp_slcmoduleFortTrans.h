@@ -1,0 +1,83 @@
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Copyright: 2010 to the present, California Institute of Technology.
+// ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+// Any commercial use must be negotiated with the Office of Technology Transfer
+// at the California Institute of Technology.
+// 
+// This software may be subject to U.S. export control laws. By accepting this
+// software, the user agrees to comply with all applicable U.S. export laws and
+// regulations. User has the responsibility to obtain export licenses,  or other
+// export authority as may be required before exporting such information to
+// foreign countries or providing access to foreign persons.
+// 
+// Installation and use of this software is restricted by a license agreement
+// between the licensee and the California Institute of Technology. It is the
+// User's responsibility to abide by the terms of the license agreement.
+//
+// Author: Giangi Sacco
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+#ifndef resamp_slcmoduleFortTrans_h
+#define resamp_slcmoduleFortTrans_h
+
+	#if defined(NEEDS_F77_TRANSLATION)
+
+		#if defined(F77EXTERNS_LOWERCASE_TRAILINGBAR)
+            #define setStdWriter_f setstdwriter_
+			#define allocate_azimuthCarrier_f allocate_azimuthcarrier_
+			#define allocate_dopplerCoefficients_f allocate_dopplercoefficients_
+			#define allocate_r_azoff2_f allocate_r_azoff2_
+			#define allocate_r_azoff_f allocate_r_azoff_
+			#define allocate_r_azpos2_f allocate_r_azpos2_
+			#define allocate_r_azpos_f allocate_r_azpos_
+			#define allocate_r_ranoff2_f allocate_r_ranoff2_
+			#define allocate_r_ranoff_f allocate_r_ranoff_
+			#define allocate_r_ranpos2_f allocate_r_ranpos2_
+			#define allocate_r_ranpos_f allocate_r_ranpos_
+			#define allocate_r_sig2_f allocate_r_sig2_
+			#define allocate_r_sig_f allocate_r_sig_
+			#define allocate_rangeCarrier_f allocate_rangecarrier_
+			#define deallocate_azimuthCarrier_f deallocate_azimuthcarrier_
+			#define deallocate_dopplerCoefficients_f deallocate_dopplercoefficients_
+			#define deallocate_r_azoff2_f deallocate_r_azoff2_
+			#define deallocate_r_azoff_f deallocate_r_azoff_
+			#define deallocate_r_azpos2_f deallocate_r_azpos2_
+			#define deallocate_r_azpos_f deallocate_r_azpos_
+			#define deallocate_r_ranoff2_f deallocate_r_ranoff2_
+			#define deallocate_r_ranoff_f deallocate_r_ranoff_
+			#define deallocate_r_ranpos2_f deallocate_r_ranpos2_
+			#define deallocate_r_ranpos_f deallocate_r_ranpos_
+			#define deallocate_r_sig2_f deallocate_r_sig2_
+			#define deallocate_r_sig_f deallocate_r_sig_
+			#define deallocate_rangeCarrier_f deallocate_rangecarrier_
+			#define getAzimuthCarrier_f getazimuthcarrier_
+			#define getRangeCarrier_f getrangecarrier_
+			#define resamp_slc_f resamp_slc_
+			#define setDopplerCentroidCoefficients_f setdopplercentroidcoefficients_
+			#define setFirstLineOffset_f setfirstlineoffset_
+			#define setLocationAcross1_f setlocationacross1_
+			#define setLocationAcross2_f setlocationacross2_
+			#define setLocationAcrossOffset1_f setlocationacrossoffset1_
+			#define setLocationAcrossOffset2_f setlocationacrossoffset2_
+			#define setLocationDown1_f setlocationdown1_
+			#define setLocationDown2_f setlocationdown2_
+			#define setLocationDownOffset1_f setlocationdownoffset1_
+			#define setLocationDownOffset2_f setlocationdownoffset2_
+			#define setNumberFitCoefficients_f setnumberfitcoefficients_
+			#define setNumberLines_f setnumberlines_
+			#define setNumberRangeBin_f setnumberrangebin_
+			#define setRadarWavelength_f setradarwavelength_
+			#define setSNR1_f setsnr1_
+			#define setSNR2_f setsnr2_
+			#define setSlantRangePixelSpacing_f setslantrangepixelspacing_
+		#else
+			#error Unknown translation for FORTRAN external symbols
+		#endif
+
+	#endif
+
+#endif resamp_slcmoduleFortTrans_h

@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+import os
+
+Import('envsch2orbit')
+package = envsch2orbit['PACKAGE']
+install = envsch2orbit['PRJ_SCONS_INSTALL'] + '/' + package
+build = envsch2orbit['PRJ_SCONS_BUILD'] + '/' + package
+libList = ['sch2orbit', 'orbitLib', 'utilLib', 'StdOEL']
+envsch2orbit.PrependUnique(LIBS = libList)
+module = envsch2orbit.LoadableModule(target = 'sch2orbit.abi3.so', source = 'sch2orbitmodule.cpp') 
+envsch2orbit.Install(install,module)
+envsch2orbit.Alias('install',install)
+envsch2orbit.Install(build,module)
+envsch2orbit.Alias('build',build)

@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+import os
+import sys
+
+Import('env')
+envapplications = env.Clone()
+package = 'applications'
+envapplications['PACKAGE'] = package
+envapplications['INSTALL_PATH'] = os.path.join(
+    envapplications['PRJ_SCONS_INSTALL'], package
+    )
+Export('envapplications')
+
+install = envapplications['INSTALL_PATH']
+
+helpList,installHelp = envapplications['HELP_BUILDER'](envapplications,'__init__.py',install)
+envapplications.Install(installHelp,helpList)
+envapplications.Alias('install',installHelp)
+
+listFiles = ['mdx.py',
+	         'PrepareStack.py',
+             'insarApp.py',
+             'xmlGenerator.py',
+             'dpmApp.py',
+	         'CalculatePegPoint.py',
+             'calculateBaseline.py',
+             'extractHDROrbit.py',
+             'formSLC.py',
+             'viewMetadata.py',
+             'make_raw.py',
+             '__init__.py',
+             'isceApp.py',
+             'stitcher.py',
+             'dem.py',
+             'upsampleDem.py',
+             'iscehelp.py',
+             'imageMath.py']
+
+envapplications.Install(install, listFiles)
+envapplications.Alias('install', install)

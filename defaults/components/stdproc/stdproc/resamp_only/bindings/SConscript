@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+import os
+
+Import('envresamp_only')
+package = envresamp_only['PACKAGE']
+project = envresamp_only['PROJECT']
+
+install = os.path.join(envresamp_only['PRJ_SCONS_INSTALL'],package,project)
+build = os.path.join(envresamp_only['PRJ_SCONS_BUILD'],package,project)
+libList = ['resamp_only','resampLib','utilLib','DataAccessor','InterleavedAccessor','StdOEL']
+envresamp_only.PrependUnique(LIBS = libList)
+module = envresamp_only.LoadableModule(target = 'resamp_only.abi3.so', source = 'resamp_onlymodule.cpp') 
+envresamp_only.Install(install,module)
+envresamp_only.Alias('install',install)
+envresamp_only.Install(build,module)
+envresamp_only.Alias('build',build)

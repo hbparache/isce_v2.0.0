@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+import os
+
+Import('envgeocode')
+package = envgeocode['PACKAGE']
+project = envgeocode['PROJECT']
+install = envgeocode['PRJ_SCONS_INSTALL'] + '/' + package + '/' + project
+build = envgeocode['PRJ_SCONS_BUILD'] + '/' + package + '/' + project
+libList = ['gomp','geocode','orbitLib','DataAccessor','InterleavedAccessor','utilLib','StdOEL']
+envgeocode.PrependUnique(LIBS = libList)
+module = envgeocode.LoadableModule(target = 'geocode.abi3.so', source = 'geocodemodule.cpp') 
+envgeocode.Install(install,module)
+envgeocode.Alias('install',install)
+envgeocode.Install(build,module)
+envgeocode.Alias('build',build)

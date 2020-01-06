@@ -1,0 +1,53 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#                                  Giangi Sacco
+#                        NASA Jet Propulsion Laboratory
+#                      California Institute of Technology
+#                        (C) 2009  All Rights Reserved
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#!/usr/bin/env python
+
+
+import os
+import sys
+Import('envcomponents')
+package = 'components/isceobj'
+envisceobj = envcomponents.Clone()
+envisceobj['PACKAGE'] = package
+install = envisceobj['PRJ_SCONS_INSTALL'] + '/' + package 
+initFile = '__init__.py'
+if not os.path.exists(initFile):
+	fout = open(initFile,"w")
+	fout.write("#!/usr/bin/env python")
+	fout.close()
+
+listFiles = [initFile]
+envisceobj.Install(install,listFiles)
+envisceobj.Alias('install',install)
+Export('envisceobj')
+SConscript('LineAccessor/SConscript')
+SConscript('Image/SConscript')
+SConscript('Platform/SConscript')
+SConscript('Radar/SConscript')
+SConscript('Constants/SConscript')
+SConscript('XmlUtil/SConscript')
+SConscript('Sensor/SConscript')
+SConscript('Orbit/SConscript')
+SConscript('Attitude/SConscript')
+SConscript('Scene/SConscript')
+SConscript('Planet/SConscript')
+SConscript('Renderer/SConscript')
+SConscript('Doppler/SConscript')
+SConscript('Location/SConscript')
+SConscript('Image/SConscript')
+SConscript('Filter/SConscript')
+SConscript('ImageFilter/SConscript')
+SConscript('Catalog/SConscript')
+SConscript('Pause/SConscript')
+SConscript('InsarProc/SConscript')
+SConscript('Util/SConscript')
+SConscript('Unwrap/SConscript')
+SConscript('IsceProc/SConscript') ##KK, ML 2013-07-24: processors for isceApp.py
+SConscript('Stack/SConscript') ##KK, ML 2013-07-24: get all selected scenes from xml

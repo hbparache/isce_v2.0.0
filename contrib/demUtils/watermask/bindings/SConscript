@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Copyright: 2010 to the present, California Institute of Technology.
+# ALL RIGHTS RESERVED. United States Government Sponsorship acknowledged.
+# Any commercial use must be negotiated with the Office of Technology Transfer
+# at the California Institute of Technology.
+# 
+# This software may be subject to U.S. export control laws. By accepting this
+# software, the user agrees to comply with all applicable U.S. export laws and
+# regulations. User has the responsibility to obtain export licenses,  or other
+# export authority as may be required before exporting such information to
+# foreign countries or providing access to foreign persons.
+# 
+# Installation and use of this software is restricted by a license agreement
+# between the licensee and the California Institute of Technology. It is the
+# User's responsibility to abide by the terms of the license agreement.
+#
+# Author: Giangi Sacco
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+import os
+
+Import('envwaterMask')
+package = envwaterMask['PACKAGE']
+project = envwaterMask['PROJECT']
+install = os.path.join(envwaterMask['PRJ_SCONS_INSTALL'],package)
+build = os.path.join(envwaterMask['PRJ_SCONS_BUILD'],package,project)
+libList = ['watermask']
+envwaterMask.PrependUnique(LIBS = libList)
+module = envwaterMask.LoadableModule(target = 'watermask.abi3.so', source = 'watermaskmodule.cpp') 
+envwaterMask.Install(install,module)
+envwaterMask.Alias('install',install)
+envwaterMask.Install(build,module)
+envwaterMask.Alias('build',build)
